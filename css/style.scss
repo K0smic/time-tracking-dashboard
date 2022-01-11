@@ -1,0 +1,303 @@
+// RESET
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// /RESET
+
+// Colors
+$dark-background: hsl(226, 43%, 10%);
+$card-background: hsl(236, 44%, 20%);
+
+$user-card: hsl(246, 80%, 60%);
+
+$light-user-font: hsl(244, 79%, 89%);
+$light-card-font: hsl(180, 100%, 99%);
+$dark-user-font: hsl(246, 94%, 80%);
+$dark-card-font: hsl(238, 23%, 51%);
+$font-weight3: 300;
+$font-weight4: 400;
+$font-weight5: 500;
+
+// Size
+
+$grid-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);;
+$grid-cell-width: 16rem;
+$grid-gap: 1.8rem;
+
+$laptop-col-grid: $grid-gap * 3+ ($grid-cell-width * 4);
+$tablet-col-grid: $grid-gap * 3+ ($grid-cell-width * 3);
+$mobile-col-grid: $grid-gap + ($grid-cell-width * 2);
+
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: $dark-background;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 100vw;
+  min-height: 100vh;
+  @media (min-width: $laptop-col-grid) {
+    height: 100vh;
+  }
+}
+
+.time-dash {
+  width: 100%;
+  height: 100%;
+  color: $light-card-font;
+  display: grid;
+  grid-auto-rows: $grid-cell-height;
+  place-content: center;
+  gap: $grid-gap;
+
+  & > section[class*="time-dash_"] {
+    background-color: $card-background;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    & > * {
+      padding: 0 0 0 2rem;
+    }
+  }
+
+  &__user {
+    .user__usrdata {
+      background-color: $user-card;
+      border-radius: 0.6em;
+      flex: 7;
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1.5rem;
+      &-propic {
+        align-self: center;
+        // flex: 4;
+        & > img {
+          border-radius: 50%;
+          outline: $light-card-font solid 3px;
+          width: clamp(4.574375rem, 4.4245rem + 0.6394vw, 5rem);
+          height: auto;
+        }
+      }
+      &-welcome {
+        padding-bottom: 0.7rem;
+        & > span {
+          color: $dark-user-font;
+          font-size: 1rem;
+          line-height: 1.9rem;
+        }
+        & > h1 {
+          margin: 0;
+          font-weight: $font-weight3;
+          color: $light-user-font;
+          font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);;
+          line-height: 2.9rem;
+        }
+      }
+    }
+    .user__usrstats {
+      flex: 3;
+      display: flex;
+      & > ul {
+        flex-grow: 1;
+        padding: 1rem 0 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        & > li {
+          flex: 1 0 10vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          & > button {
+            background-color: transparent;
+            border-width: 0;
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            padding: 0;
+            cursor: pointer;
+            color: $dark-card-font;
+
+          }
+        }
+        .active {
+          color: $light-user-font;
+        }
+      }
+    }
+  }
+
+  // &__work {
+  // }
+  // &__play {
+  // }
+  // &__study {
+  // }
+  // &__exercize {
+  // }
+  // &__social {
+  // }
+  // &__self-care {
+  // }
+
+  @media (min-width: $laptop-col-grid) {
+    grid-template-columns: repeat(4, $grid-cell-width);
+  }
+  @media (max-width: $laptop-col-grid) and (min-width: $tablet-col-grid) {
+    grid-template-columns: repeat(auto-fit, $grid-cell-width);
+    .time-dash__social {
+      grid-column: 3 / 2;
+    }
+  }
+  @media (min-width: $tablet-col-grid) {
+    .time-dash__user {
+      grid-row: span 2;
+    }
+  }
+  @media (max-width: $tablet-col-grid) and (min-width: $mobile-col-grid) {
+    grid-template-columns: repeat(2, $grid-cell-width);
+    .time-dash__user {
+      grid-column: span 2;
+    }
+    .user__usrdata-welcome {
+      align-self: center;
+    }
+  }
+  @media (max-width: $mobile-col-grid) {
+    grid-template-columns: repeat(auto-fit, 89%);
+    .user__usrdata-welcome {
+      align-self: center;
+    }
+  }
+}
