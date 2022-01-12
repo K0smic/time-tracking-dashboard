@@ -159,13 +159,53 @@ body {
   gap: 1.8rem;
 }
 .time-dash > section[class*=time-dash_] {
-  background-color: #1d2049;
   border-radius: 0.8em;
   display: flex;
   flex-direction: column;
+  background-repeat: no-repeat;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__background] {
+  flex: 2;
+  border-radius: 0.8em 0.8em 0 0;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] {
+  flex: 8;
+  display: flex;
+  background-color: #1d2049;
+  border-radius: 0.8em;
 }
 .time-dash > section[class*=time-dash_] > * {
   padding: 0 0 0 2rem;
+}
+.time-dash__work {
+  background-color: #ff8c66;
+  background-image: url(../images/icon-work.svg);
+  background-position: 90% -7%;
+}
+.time-dash__play {
+  background-color: #55c2e7;
+  background-image: url(../images/icon-play.svg);
+  background-position: 90% -1%;
+}
+.time-dash__study {
+  background-color: #ff5c7c;
+  background-image: url(../images/icon-study.svg);
+  background-position: 90% -1%;
+}
+.time-dash__exercize {
+  background-color: #4acf81;
+  background-image: url(../images/icon-exercise.svg);
+  background-position: 90% -1%;
+}
+.time-dash__social {
+  background-color: #7033d1;
+  background-image: url(../images/icon-social.svg);
+  background-position: 92% 2%;
+}
+.time-dash__self-care {
+  background-color: #f2c75a;
+  background-image: url(../images/icon-self-care.svg);
+  background-position: 92% -5%;
 }
 .time-dash__user .user__usrdata {
   background-color: #5847eb;
@@ -267,4 +307,7 @@ body {
   .time-dash .user__usrdata-welcome {
     align-self: center;
   }
+}
+.time-dash .card-background {
+  background-color: #1d2049;
 }/*# sourceMappingURL=style.css.map */

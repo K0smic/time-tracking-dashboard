@@ -135,6 +135,12 @@ table {
 // Colors
 $dark-background: hsl(226, 43%, 10%);
 $card-background: hsl(236, 44%, 20%);
+$work-background: hsl(15, 100%, 70%);
+$play-background: hsl(195, 75%, 62%);
+$study-background: hsl(348, 100%, 68%);
+$social-background: hsl(263, 63%, 51%);
+$exercize-background: hsl(145, 58%, 55%);
+$selfcare-background: hsl(43, 85%, 65%);
 
 $user-card: hsl(246, 80%, 60%);
 
@@ -148,14 +154,13 @@ $font-weight5: 500;
 
 // Size
 
-$grid-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);;
+$grid-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);
 $grid-cell-width: 16rem;
 $grid-gap: 1.8rem;
 
 $laptop-col-grid: $grid-gap * 3+ ($grid-cell-width * 4);
 $tablet-col-grid: $grid-gap * 3+ ($grid-cell-width * 3);
 $mobile-col-grid: $grid-gap + ($grid-cell-width * 2);
-
 
 body {
   font-family: "Rubik", sans-serif;
@@ -181,15 +186,56 @@ body {
   gap: $grid-gap;
 
   & > section[class*="time-dash_"] {
-    background-color: $card-background;
     border-radius: 0.8em;
     display: flex;
     flex-direction: column;
+    background-repeat: no-repeat;
+    & > div[class*="__background"] {
+      flex: 2;
+      border-radius: 0.8em 0.8em 0 0;
+    }
+
+    & > div[class*="__stats"] {
+      flex: 8;
+      display: flex;
+      background-color: $card-background;
+      border-radius: 0.8em;
+    }
+
     & > * {
       padding: 0 0 0 2rem;
     }
   }
-
+  &__work {
+    background-color: $work-background;
+    background-image: url(../images/icon-work.svg);
+    background-position: 90% -7%;
+  }
+  &__play {
+    background-color: $play-background;
+    background-image: url(../images/icon-play.svg);
+    background-position: 90% -1%;
+  }
+  &__study {
+    background-color: $study-background;
+    background-image: url(../images/icon-study.svg);
+    background-position: 90% -1%;
+  }
+  &__exercize {
+    background-color: $exercize-background;
+    background-image: url(../images/icon-exercise.svg);
+    background-position: 90% -1%;
+  }
+  &__social {
+    background-color: $social-background;
+    background-image: url(../images/icon-social.svg);
+    background-position: 92% 2%;
+  }
+  &__self-care {
+    background-color: $selfcare-background;
+    background-image: url(../images/icon-self-care.svg);
+    background-position: 92% -5%;
+  }
   &__user {
     .user__usrdata {
       background-color: $user-card;
@@ -219,7 +265,7 @@ body {
           margin: 0;
           font-weight: $font-weight3;
           color: $light-user-font;
-          font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);;
+          font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);
           line-height: 2.9rem;
         }
       }
@@ -248,7 +294,6 @@ body {
             padding: 0;
             cursor: pointer;
             color: $dark-card-font;
-
           }
         }
         .active {
@@ -257,19 +302,6 @@ body {
       }
     }
   }
-
-  // &__work {
-  // }
-  // &__play {
-  // }
-  // &__study {
-  // }
-  // &__exercize {
-  // }
-  // &__social {
-  // }
-  // &__self-care {
-  // }
 
   @media (min-width: $laptop-col-grid) {
     grid-template-columns: repeat(4, $grid-cell-width);
@@ -299,5 +331,8 @@ body {
     .user__usrdata-welcome {
       align-self: center;
     }
+  }
+  .card-background {
+    background-color: $card-background;
   }
 }
