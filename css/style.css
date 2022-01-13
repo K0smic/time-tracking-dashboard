@@ -256,6 +256,7 @@ body {
 }
 .time-dash__user .user__usrdata-propic {
   align-self: center;
+  border-radius: 50%;
 }
 .time-dash__user .user__usrdata-propic > img {
   border-radius: 50%;
