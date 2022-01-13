@@ -139,7 +139,7 @@ $work-background: hsl(15, 100%, 70%);
 $play-background: hsl(195, 75%, 62%);
 $study-background: hsl(348, 100%, 68%);
 $social-background: hsl(263, 63%, 51%);
-$exercize-background: hsl(145, 58%, 55%);
+$exercise-background: hsl(145, 58%, 55%);
 $selfcare-background: hsl(43, 85%, 65%);
 
 $user-card: hsl(246, 80%, 60%);
@@ -148,6 +148,11 @@ $light-user-font: hsl(244, 79%, 89%);
 $light-card-font: hsl(180, 100%, 99%);
 $dark-user-font: hsl(246, 94%, 80%);
 $dark-card-font: hsl(238, 23%, 51%);
+$dark-stats-font: hsl(238, 30%, 68%);
+$small-font-size: 1rem;
+$default-font-size: 18px;
+$medium-font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);
+$large-font-size: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
 $font-weight3: 300;
 $font-weight4: 400;
 $font-weight5: 500;
@@ -165,7 +170,8 @@ $mobile-col-grid: $grid-gap + ($grid-cell-width * 2);
 body {
   font-family: "Rubik", sans-serif;
   background-color: $dark-background;
-  font-size: 18px;
+  font-size: $default-font-size;
+  font-weight: $font-weight4;
 }
 
 .container {
@@ -197,9 +203,51 @@ body {
 
     & > div[class*="__stats"] {
       flex: 8;
-      display: flex;
       background-color: $card-background;
       border-radius: 0.8em;
+      display: flex;
+      flex-direction: column;
+
+      & > .stats__category {
+        flex: 2;
+        display: flex;
+        & > ul {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          & > li:first-child {
+            flex: 3;
+            // font-weight: $font-weight4;
+          }
+          & > li:last-child {
+            flex: 2;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      & > .stats__time {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        & > span {
+         font-size: $small-font-size;
+         color: $dark-stats-font;
+         flex: 1;
+         display: flex;
+         align-items: center;
+        }
+      }
+
+      .stats__time__hrs {
+        font-weight: $font-weight3;
+        font-size: $large-font-size;
+
+      }
     }
 
     & > * {
@@ -221,8 +269,8 @@ body {
     background-image: url(../images/icon-study.svg);
     background-position: 90% -1%;
   }
-  &__exercize {
-    background-color: $exercize-background;
+  &__exercise {
+    background-color: $exercise-background;
     background-image: url(../images/icon-exercise.svg);
     background-position: 90% -1%;
   }
@@ -258,14 +306,14 @@ body {
         padding-bottom: 0.7rem;
         & > span {
           color: $dark-user-font;
-          font-size: 1rem;
+          font-size: $small-font-size;
           line-height: 1.9rem;
         }
         & > h1 {
           margin: 0;
           font-weight: $font-weight3;
           color: $light-user-font;
-          font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);
+          font-size: $medium-font-size;
           line-height: 2.9rem;
         }
       }

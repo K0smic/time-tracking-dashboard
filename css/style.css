@@ -137,6 +137,7 @@ body {
   font-family: "Rubik", sans-serif;
   background-color: #0f1424;
   font-size: 18px;
+  font-weight: 400;
 }
 
 .container {
@@ -170,9 +171,46 @@ body {
 }
 .time-dash > section[class*=time-dash_] > div[class*=__stats] {
   flex: 8;
-  display: flex;
   background-color: #1d2049;
   border-radius: 0.8em;
+  display: flex;
+  flex-direction: column;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__category {
+  flex: 2;
+  display: flex;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__category > ul {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__category > ul > li:first-child {
+  flex: 3;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__category > ul > li:last-child {
+  flex: 2;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__time {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] > .stats__time > span {
+  font-size: 1rem;
+  color: #9597c6;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.time-dash > section[class*=time-dash_] > div[class*=__stats] .stats__time__hrs {
+  font-weight: 300;
+  font-size: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
 }
 .time-dash > section[class*=time-dash_] > * {
   padding: 0 0 0 2rem;
@@ -192,7 +230,7 @@ body {
   background-image: url(../images/icon-study.svg);
   background-position: 90% -1%;
 }
-.time-dash__exercize {
+.time-dash__exercise {
   background-color: #4acf81;
   background-image: url(../images/icon-exercise.svg);
   background-position: 90% -1%;
