@@ -150,7 +150,6 @@ $dark-user-font: hsl(246, 94%, 80%);
 $dark-card-font: hsl(238, 23%, 51%);
 $dark-stats-font: hsl(238, 30%, 68%);
 
-
 // Size
 
 $small-font-size: 1rem;
@@ -237,18 +236,17 @@ body {
         display: flex;
         flex-direction: column;
         & > span {
-         font-size: $small-font-size;
-         color: $dark-stats-font;
-         flex: 1;
-         display: flex;
-         align-items: center;
+          font-size: $small-font-size;
+          color: $dark-stats-font;
+          flex: 1;
+          display: flex;
+          align-items: center;
         }
       }
 
       .stats__time__hrs {
         font-weight: $font-weight3;
         font-size: $large-font-size;
-
       }
     }
 
@@ -300,7 +298,7 @@ body {
         // flex: 4;
         & > img {
           border-radius: 50%;
-          outline: $light-card-font solid 3px;
+          border: 3px solid $light-card-font;
           width: clamp(4.574375rem, 4.4245rem + 0.6394vw, 5rem);
           height: auto;
         }
