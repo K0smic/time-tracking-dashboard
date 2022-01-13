@@ -172,7 +172,7 @@ body {
 .time-dash > section[class*=time-dash_] > div[class*=__stats] {
   flex: 8;
   background-color: #1d2049;
-  border-radius: 0.8em;
+  border-radius: 0.7em;
   display: flex;
   flex-direction: column;
 }

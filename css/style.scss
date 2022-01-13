@@ -149,6 +149,10 @@ $light-card-font: hsl(180, 100%, 99%);
 $dark-user-font: hsl(246, 94%, 80%);
 $dark-card-font: hsl(238, 23%, 51%);
 $dark-stats-font: hsl(238, 30%, 68%);
+
+
+// Size
+
 $small-font-size: 1rem;
 $default-font-size: 18px;
 $medium-font-size: clamp(1.5rem, 1.1466rem + 1.5038vw, 2.5rem);
@@ -156,8 +160,6 @@ $large-font-size: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
 $font-weight3: 300;
 $font-weight4: 400;
 $font-weight5: 500;
-
-// Size
 
 $grid-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);
 $grid-cell-width: 16rem;
@@ -204,7 +206,7 @@ body {
     & > div[class*="__stats"] {
       flex: 8;
       background-color: $card-background;
-      border-radius: 0.8em;
+      border-radius: 0.7em;
       display: flex;
       flex-direction: column;
 
