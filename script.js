@@ -1,41 +1,57 @@
-// const perf = performance.now();
+window.onload = function () {
+  const perf = performance.now();
 
-document.getElementById("Daily").onclick = changeTime
-document.getElementById("Weekly").onclick = changeTime
-document.getElementById("Monthly").onclick = changeTime
+  var day = document.getElementById("daily");
+  var week = document.getElementById("weekly");
+  var month = document.getElementById("monthly");
 
-function changeTime() {
-  document.querySelector(".active").classList.remove("active");
-  this.classList.add("active");
-  console.log(this)
-}
+  function changeTime(timeframe) {
+    const funCount = performance.now();
+    if (document.querySelector(".active") && !timeframe.className) {
+      document.querySelector(".active").classList.remove("active");
+      // console.log("There is an active class, and it's not me!");
+    }
 
-// const perf1 = performance.now();
-// console.log(`Process took ${perf1 - perf} milliseconds.`);
+    if (!timeframe.className) {
+      timeframe.classList.add("active");
+      // console.log("I don't have a class, now i have");
+    }
+    // console.log("No more if");
+    const funCount1 = performance.now();
+    console.log(`ChangeTime took ${funCount1 - funCount} milliseconds.`);
+    getData(timeframe.id);
+  }
 
-//  async function getData(url) {
-//   const response = await fetch(url);
-//   return response.json()
-// }
+  function getData(timeframe) {
+    const funCount = performance.now();
+    fetch("./data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        Object.keys(data).forEach(function (key) {
+          const title = data[key].title.replace(/ /g, "-");
+          const currentHrs = document.querySelector("." + title + "__stats > .stats__time > time");
+          const pastHrs = document.querySelector("." + title + "__stats > .stats__time > span > time");
 
-// const data = getData('./data.json');
-// console.log(data)
+          currentHrs.innerHTML = data[key]["timeframes"][timeframe]["current"] + "hrs";
+          pastHrs.innerHTML = data[key]["timeframes"][timeframe]["previous"] + "hrs";
+        });
+      });
+    const funCount1 = performance.now();
+    console.log(`getData took ${funCount1 - funCount} milliseconds.`);
+  }
 
-// var obj;
+  changeTime(week);
 
-// fetch('./data.json')
-//   .then(res => res.json())
-//   .then(data => obj = data)
-//   .then(() => console.log(obj))
+  day.onclick = function () {
+    changeTime(day);
+  };
+  week.onclick = function () {
+    changeTime(week);
+  };
+  month.onclick = function () {
+    changeTime(month);
+  };
 
-// fetch("./data.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-
-//     Object.keys(data).forEach(function (key) {
-//       // console.log(key, data[key]);
-//       // console.log(data[key])
-//       const title = data[key].title.replace(/ /g, "-");
-//       document.querySelector("." + title + "__stats > .stats__category > ul > .stats__category__title > h3 > strong").innerHTML = data[key].title;
-//     });
-//   });
+  const perf1 = performance.now();
+  console.log(`Process took ${perf1 - perf} milliseconds.`);
+};
