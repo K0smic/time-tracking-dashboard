@@ -29,8 +29,8 @@ window.onload = function () {
       .then((data) => {
         Object.keys(data).forEach(function (key) {
           const title = data[key].title.replace(/ /g, "-");
-          const currentHrs = document.querySelector("." + title + "__stats > .stats__time > time");
-          const pastHrs = document.querySelector("." + title + "__stats > .stats__time > span > time");
+          const currentHrs = document.querySelector("." + title + "__stats > .stats__time > .stats__time__hrs");
+          const pastHrs = document.querySelector("." + title + "__stats > .stats__time > span > .stats__time__past");
 
           currentHrs.innerHTML = data[key]["timeframes"][timeframe]["current"] + "hrs";
           // currentHrs.dateTime = data[key]["timeframes"][timeframe]["current"] + ":00";
