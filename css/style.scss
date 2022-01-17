@@ -135,6 +135,7 @@ table {
 // Colors
 $dark-background: hsl(226, 43%, 10%);
 $card-background: hsl(236, 44%, 20%);
+$card-hover-background: hsl(236, 41%, 34%);
 $work-background: hsl(15, 100%, 70%);
 $play-background: hsl(195, 75%, 62%);
 $study-background: hsl(348, 100%, 68%);
@@ -160,7 +161,10 @@ $font-weight3: 300;
 $font-weight4: 400;
 $font-weight5: 500;
 
-$grid-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);
+$grid-first-cell-height: clamp(12.099625rem, 10.9377rem + 4.9575vw, 15.3994375rem);
+$grid-other-cell-height: clamp(10rem, 3.2507rem + 21.5977vw, 15.3994375rem);
+$grid-auto-height: $grid-first-cell-height $grid-other-cell-height $grid-other-cell-height $grid-other-cell-height
+  $grid-first-cell-height $grid-other-cell-height $grid-other-cell-height $grid-other-cell-height;
 $grid-cell-width: 16rem;
 $grid-gap: 1.8rem;
 
@@ -188,102 +192,10 @@ body {
   height: 100%;
   color: $light-card-font;
   display: grid;
-  grid-auto-rows: $grid-cell-height;
+  grid-auto-rows: $grid-auto-height;
   place-content: center;
   gap: $grid-gap;
 
-  & > section[class*="time-dash_"] {
-    border-radius: 0.8em;
-    display: flex;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    & > div[class*="__background"] {
-      flex: 2;
-      border-radius: 0.8em 0.8em 0 0;
-    }
-
-    & > div[class*="__stats"] {
-      flex: 8;
-      background-color: $card-background;
-      border-radius: 0.7em;
-      display: flex;
-      flex-direction: column;
-
-      & > .stats__category {
-        flex: 2;
-        display: flex;
-        & > ul {
-          flex: 1;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          & > li:first-child {
-            flex: 3;
-            // font-weight: $font-weight4;
-          }
-          & > li:last-child {
-            flex: 2;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-      }
-
-      & > .stats__time {
-        flex: 3;
-        display: flex;
-        // flex-direction: column;
-        & > span {
-          font-size: $small-font-size;
-          color: $dark-stats-font;
-          flex: 1;
-          display: flex;
-          // align-items: center;
-        }
-      }
-
-      .stats__time__hrs {
-        font-weight: $font-weight3;
-        font-size: $large-font-size;
-      }
-    }
-
-    & > * {
-      padding: 0 0 0 2rem;
-    }
-  }
-  &__work {
-    background-color: $work-background;
-    background-image: url(../images/icon-work.svg);
-    background-position: 90% -7%;
-  }
-  &__play {
-    background-color: $play-background;
-    background-image: url(../images/icon-play.svg);
-    background-position: 90% -1%;
-  }
-  &__study {
-    background-color: $study-background;
-    background-image: url(../images/icon-study.svg);
-    background-position: 90% -1%;
-  }
-  &__exercise {
-    background-color: $exercise-background;
-    background-image: url(../images/icon-exercise.svg);
-    background-position: 90% -1%;
-  }
-  &__social {
-    background-color: $social-background;
-    background-image: url(../images/icon-social.svg);
-    background-position: 92% 2%;
-  }
-  &__self-care {
-    background-color: $selfcare-background;
-    background-image: url(../images/icon-self-care.svg);
-    background-position: 92% -5%;
-  }
   &__user {
     .user__usrdata {
       background-color: $user-card;
@@ -352,14 +264,127 @@ body {
     }
   }
 
-  @media (min-width: $laptop-col-grid) {
-    grid-template-columns: repeat(4, $grid-cell-width);
-    .stats__time {
-      flex-direction: column;
-      & > span {
+  .card-background {
+    background-color: $card-background;
+  }
 
+  & > section[class*="time-dash_"] {
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    & > div[class*="__background"] {
+      flex: 2;
+      border-radius: 0.8em 0.8em 0 0;
+    }
+
+    & > div[class*="__stats"] {
+      flex: 8;
+      background-color: $card-background;
+      border-radius: 0.7em;
+      display: flex;
+      flex-direction: column;
+      &:hover {
+        background-color: $card-hover-background;
+        cursor: pointer;
+      }
+      & > .stats__category {
+        display: flex;
+        pointer-events: none;
+        & > ul {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          & > li:last-child {
+            flex: 2;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+              cursor: pointer;
+              color: #fff;
+              filter: saturate(100%);
+            }
+          }
+        }
+      }
+
+      & > .stats__time {
+        display: flex;
+        // flex-direction: column;
+
+        & > span {
+          font-size: $small-font-size;
+          color: $dark-stats-font;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .stats__time__hrs {
+        font-weight: $font-weight3;
+        font-size: $large-font-size;
       }
     }
+
+    & > * {
+      padding: 0 0 0 2rem;
+    }
+  }
+  &__work {
+    background-color: $work-background;
+    background-image: url(../images/icon-work.svg);
+    background-position: 90% -7%;
+  }
+  &__play {
+    background-color: $play-background;
+    background-image: url(../images/icon-play.svg);
+    background-position: 90% -1%;
+  }
+  &__study {
+    background-color: $study-background;
+    background-image: url(../images/icon-study.svg);
+    background-position: 90% -1%;
+  }
+  &__exercise {
+    background-color: $exercise-background;
+    background-image: url(../images/icon-exercise.svg);
+    background-position: 90% -1%;
+  }
+  &__social {
+    background-color: $social-background;
+    background-image: url(../images/icon-social.svg);
+    background-position: 92% 2%;
+  }
+  &__self-care {
+    background-color: $selfcare-background;
+    background-image: url(../images/icon-self-care.svg);
+    background-position: 92% -5%;
+  }
+
+  @media (min-width: $mobile-col-grid) {
+    .stats__category {
+      flex: 2;
+      & > ul {
+        & > li:first-child {
+          flex: 3;
+        }
+      }
+    }
+    .stats__time {
+      flex: 3;
+      flex-direction: column;
+      & > span {
+        flex: 1;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: $laptop-col-grid) {
+    grid-template-columns: repeat(4, $grid-cell-width);
   }
   @media (max-width: $laptop-col-grid) and (min-width: $tablet-col-grid) {
     grid-template-columns: repeat(auto-fit, $grid-cell-width);
@@ -386,15 +411,33 @@ body {
     .user__usrdata-welcome {
       align-self: center;
     }
+    .stats__category {
+      flex: 1;
+      & > ul {
+        & > li:first-child {
+          flex: 4;
+        }
+      }
+    }
     .stats__time {
+      flex: 1;
       flex-wrap: wrap;
       flex-direction: row;
+      align-items: center;
+      margin-top: -3rem;
+      & > time {
+        flex: 1;
+      }
       & > span {
-
+        flex: 1;
+        justify-items: end;
       }
     }
   }
-  .card-background {
-    background-color: $card-background;
+}
+
+@media (max-width: $laptop-col-grid) {
+  .time-dash {
+    margin: 5rem 0 5rem 0;
   }
 }
