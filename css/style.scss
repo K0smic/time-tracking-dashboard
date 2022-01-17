@@ -234,13 +234,13 @@ body {
       & > .stats__time {
         flex: 3;
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         & > span {
           font-size: $small-font-size;
           color: $dark-stats-font;
           flex: 1;
           display: flex;
-          align-items: center;
+          // align-items: center;
         }
       }
 
@@ -354,6 +354,12 @@ body {
 
   @media (min-width: $laptop-col-grid) {
     grid-template-columns: repeat(4, $grid-cell-width);
+    .stats__time {
+      flex-direction: column;
+      & > span {
+
+      }
+    }
   }
   @media (max-width: $laptop-col-grid) and (min-width: $tablet-col-grid) {
     grid-template-columns: repeat(auto-fit, $grid-cell-width);
@@ -379,6 +385,13 @@ body {
     grid-template-columns: repeat(auto-fit, 89%);
     .user__usrdata-welcome {
       align-self: center;
+    }
+    .stats__time {
+      flex-wrap: wrap;
+      flex-direction: row;
+      & > span {
+
+      }
     }
   }
   .card-background {
