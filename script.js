@@ -33,7 +33,9 @@ window.onload = function () {
           const pastHrs = document.querySelector("." + title + "__stats > .stats__time > span > time");
 
           currentHrs.innerHTML = data[key]["timeframes"][timeframe]["current"] + "hrs";
+          currentHrs.dateTime = data[key]["timeframes"][timeframe]["current"] + ":00";
           pastHrs.innerHTML = data[key]["timeframes"][timeframe]["previous"] + "hrs";
+          pastHrs.dateTime = data[key]["timeframes"][timeframe]["previous"] + ":00";
         });
       });
     const funCount1 = performance.now();
